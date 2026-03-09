@@ -461,18 +461,27 @@ If CareSync has helped you, please consider:
 </div>
 
 ---
-
+---
 <h2 align="center">👨‍💻 Project Admin</h2>
 
-<p align="center" style="margin-top: 10px; font-size: 1.3em; font-weight: bold;">
-  💚 mohamed selim 💚
-</p>
+<div align="center">
+    <a href="https://github.com/selim-hm">
+        <img src="https://github.com/selim-hm.png" width="150" height="150" style="border-radius: 50%; border: 3px solid #1abc9c;" alt="Mohamed Maher Selim"/>
+    </a>
+    <p align="center" style="margin-top: 10px; font-size: 1.5em; font-weight: bold;">
+        💚 Mohamed Maher Selim 💚
+    </p>
+    <p align="center">
+        <b>Vibe Coding Engineer | Software Engineer</b>
+    </p>
+</div>
 
-
-
-<p align="center" style="margin-top: 15px;">
+<p align="center">
   <a href="https://github.com/selim-hm">
     <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+  </a>
+  <a href="mojamedmaher55@gmail.com">
+    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
   </a>
 </p>
 
