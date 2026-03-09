@@ -436,7 +436,7 @@ If CareSync has helped you, please consider:
 <h2 align="center">👨‍💻 Project Admin</h2>
 
 <p align="center" style="margin-top: 10px; font-size: 1.3em; font-weight: bold;">
-  💚 Adhiraj Singh 💚
+  💚 mohamed selim 💚
 </p>
 
 
@@ -450,7 +450,7 @@ If CareSync has helped you, please consider:
 </p>
 
 <p align="center">
-  <sub>Made with ❤️ by Adhiraj Singh & Contributors</sub>
+  <sub>Made with ❤️ by mohamed selim & Contributors</sub>
 </p>
 
 
