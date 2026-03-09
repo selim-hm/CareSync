@@ -42,7 +42,7 @@
      </thead>
     <tbody>
          <tr>
-            <td><img alt="Stars" src="https://img.shields.io/github/stars/akathedeveloper/CareSync?style=flat&logo=github"/></td>
+            <td><img alt="Stars" src=""/></td>
             <td><img alt="Forks" src="https://img.shields.io/github/forks/akathedeveloper/CareSync?style=flat&logo=github"/></td>
             <td><img alt="Issues" src="https://img.shields.io/github/issues/akathedeveloper/CareSync?style=flat&logo=github"/></td>
             <td><img alt="Open PRs" src="https://img.shields.io/github/issues-pr/akathedeveloper/CareSync?style=flat&logo=github"/></td>
@@ -325,7 +325,7 @@ Follow these steps to contribute your changes to **CareSync**:
 
 1. **🌟 Star & Fork the Repository**  
    Click the **“Star”** button to support the project, then **“Fork”** the repo to create your own copy:  
-   👉 [https://github.com/akathedeveloper/CareSync](https://github.com/akathedeveloper/CareSync)
+   👉 [https://github.com/selim-hm/CareSync?tab=readme-ov-file](https://github.com/selim-hm/CareSync?tab=readme-ov-file)
 
 2. **📥 Clone Your Fork**  
    Use the following command to clone your forked repository to your local machine:
@@ -372,10 +372,7 @@ Follow these steps to contribute your changes to **CareSync**:
 Thanks to these amazing people who have contributed to the **CareSync** project:
 
 <!-- readme: contributors -start -->
-<p align="center">
-    <img src="https://api.vaunt.dev/v1/github/entities/akathedeveloper/repositories/CareSync/contributors?format=svg&limit=54" width="1000" 
-    alt="List of CareSync project contributors"/>
-</p>
+
 <!-- readme: contributors -end -->
 
 ---
@@ -387,14 +384,14 @@ Thanks to these amazing people who have contributed to the **CareSync** project:
 | **Open-source** | Your code impacts real lives | ❤️ |
 
 ---
-[🌐 Do explore Live Demo](https://care-sync-app.vercel.app/)
+[🌐 Do explore Live Demo](hi)
 ---
 ## 💡 Suggestions & Feedback
 Feel free to open issues or discussions if you have any feedback, feature suggestions, or want to collaborate!
 
 ---
 ## 📄 License
-This project is licensed under the [License: MIT](https://github.com/akathedeveloper/CareSync/blob/main/License)
+This project is licensed under the [License: MIT](https://github.com/selim-hm/CareSync?tab=readme-ov-file)
 
 ---
 ## 🌸 GirlScript Summer of Code 2025
@@ -424,12 +421,6 @@ If CareSync has helped you, please consider:
 ```
 
 ---
-<p align="center">
-  Thank you for your support!
-  <a href="https://github.com/akathedeveloper/CareSync/stargazers">
-    <img src="https://img.shields.io/github/stars/akathedeveloper/CareSync?style=for-the-badge&logo=github&color=FFC107&logoColor=white" alt="CareSync GitHub repository stars badge"/>
-  </a>
-</p>
 
 ---
 <div align="center">
@@ -448,17 +439,12 @@ If CareSync has helped you, please consider:
   💚 Adhiraj Singh 💚
 </p>
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/c80a51d8-5c92-4660-818a-7efb55f70fa0" 
-       alt="Adhiraj Singh"
-       style="border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.15); max-width: 80%; height: auto;"/>
-</p>
+
 
 <p align="center" style="margin-top: 15px;">
-  <a href="https://github.com/akathedeveloper/">
+  <a href="https://github.com/selim-hm">
     <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
   </a>
-  <a href="https://linkedin.com/in/akathedeveloper/">
     <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
   </a>
 </p>
