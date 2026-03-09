@@ -466,7 +466,7 @@ If CareSync has helped you, please consider:
 
 <div align="center">
     <a href="https://github.com/selim-hm">
-        <img src="https://github.com/selim-hm.png" width="150" height="150" style="border-radius: 50%; border: 3px solid #1abc9c;" alt="Mohamed Maher Selim"/>
+        <img src="https://images.weserv.nl?url=github.com/selim-hm.png?v=4&w=150&h=150&fit=cover&mask=circle&maxage=7d" alt="Mohamed Maher Selim"/>
     </a>
     <p align="center" style="margin-top: 10px; font-size: 1.5em; font-weight: bold;">
         💚 Mohamed Maher Selim 💚
@@ -480,6 +480,7 @@ If CareSync has helped you, please consider:
   <a href="https://github.com/selim-hm">
     <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
   </a>
+
   <a href="mojamedmaher55@gmail.com">
     <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
   </a>
