@@ -56,7 +56,6 @@
   "footer.allRightsReserved": "All rights reserved.",
   "footer.privacy": "Privacy",
   "footer.terms": "Terms Of Service",
-  "footer.openSource": "Open Source",
   "landing.heroHeadline": "Healthcare Management Made Simple",
   "landing.trustBadge": "Trusted by 500+ Healthcare Providers",
   "landing.heroSubhead": "Streamline patient care with our comprehensive healthcare platform. Connect doctors, patients, and pharmacies in one secure ecosystem.",
@@ -277,8 +276,6 @@
   "stats.timeline.phase3.title": "AI Integration",
   "stats.timeline.phase3.status": "Planned",
   "stats.timeline.phase3.description": "Smart recommendations and analytics",
-
-  
   "register.header": "Create your account",
   "register.success": "Welcome {{name}}, your account has been successfully created. Redirecting to your dashboard...",
   "register.googleSuccess": "Google signup successful! Redirecting to dashboard...",
@@ -338,8 +335,6 @@
   "register.noAccount": "Don't have an account?",
   "register.signup": "Sign up",
   "register.terms": "I agree to the Terms of Service and Privacy Policy.",
-
-  
   "login.title": "Login",
   "login.subtitle": "Welcome back!",
   "login.submit": "Sign In",
@@ -359,45 +354,30 @@
   "login.error": "Failed to login",
   "login.errorGoogle": "Google login failed",
   "forgot.title": "Forgot Password?",
-
-  
   "forgot.title": "Forgot Password?",
   "forgot.subtitle": "No worries, we'll send you reset instructions.",
-
   "forgot.email": "Email Address",
   "forgot.emailPlaceholder": "Enter your email address",
-
   "forgot.error": "Failed to send reset email. Please check if the email is correct.",
   "forgot.success": "Success! Check your inbox for reset instructions.",
-
   "forgot.button.sending": "Sending...",
   "forgot.button.submit": "Send Reset Link",
-
   "forgot.back": "Back to Sign In",
-
   "login.title": "Welcome Back",
   "login.subtitle": "Sign in to your account",
-
   "login.role": "Select Role",
   "login.roles.patient": "Patient",
   "login.roles.doctor": "Doctor",
   "login.roles.pharmacist": "Pharmacist",
   "login.roles.admin": "Admin",
-
   "login.email": "Email Address",
   "login.emailPlaceholder": "Enter your email address",
-
   "login.password": "Password",
   "login.passwordPlaceholder": "Enter your password",
-
   "login.remember": "Remember me",
   "login.forgot": "Forgot password?",
-
   "login.button": "Sign in",
   "login.google": "Continue with Google",
-
   "login.noAccount": "Don't have an account?",
   "login.signup": "Sign up"
-
-
 }

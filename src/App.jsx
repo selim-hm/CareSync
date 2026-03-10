@@ -50,6 +50,15 @@ import ScrollToTop from "./components/common/ScrollToTop";
 const ProtectedRoute = ({ children, requiredRole = null }) => {
   const { user, loading } = useAuth();
 
+  console.log("=== ProtectedRoute Check ===");
+  console.log("Loading:", loading);
+  console.log("Current user:", user);
+  console.log("User email:", user?.email);
+  console.log("User role:", user?.role);
+  console.log("User isLocalUser:", user?.isLocalUser);
+  console.log("Required role:", requiredRole);
+  console.log("===============================");
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -58,10 +67,23 @@ const ProtectedRoute = ({ children, requiredRole = null }) => {
     );
   }
 
-  if (!user) return <Navigate to="/login" replace />;
-  if (requiredRole && user.role !== requiredRole)
-    return <Navigate to={`/${user.role}`} replace />;
+  if (!user) {
+    console.log("🔴 No user found, redirecting to login");
+    return <Navigate to="/login" replace />;
+  }
 
+  // Safety check: ensure user has a role
+  if (!user.role) {
+    console.error("🔴 CRITICAL: User has no role! User object:", user);
+    return <Navigate to="/login" replace />;
+  }
+
+  if (requiredRole && user.role !== requiredRole) {
+    console.log(`🟡 User role '${user.role}' does not match required role '${requiredRole}', redirecting to /${user.role}`);
+    return <Navigate to={`/${user.role}`} replace />;
+  }
+
+  console.log("✅ ProtectedRoute passed, rendering children for role:", user.role);
   return children;
 };
 
@@ -85,6 +107,8 @@ const PublicRoute = ({ children, authOnly = false }) => {
 const AppRoutes = () => {
   const { user, loading } = useAuth();
 
+  console.log("AppRoutes render - loading:", loading, "user:", user?.email, "role:", user?.role);
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950">
@@ -101,11 +125,11 @@ const AppRoutes = () => {
   return (
     <>
       {/* Add CursorBurst component - only show if user is not on auth pages */}
-      {!window.location.pathname.includes('/login') && 
-       !window.location.pathname.includes('/register') && 
-       !window.location.pathname.includes('/forgot-password') && 
-       <CursorBurst />}
-      
+      {!window.location.pathname.includes('/login') &&
+        !window.location.pathname.includes('/register') &&
+        !window.location.pathname.includes('/forgot-password') &&
+        <CursorBurst />}
+
       <Routes>
         {/* Public Routes */}
         <Route
@@ -273,13 +297,13 @@ function App() {
                     },
                     success: {
                       iconTheme: {
-                        primary: "#10b981",
+                        primary: "#0098DA",
                         secondary: "#fff",
                       },
                       style: {
-                        background: "#f0fdf4",
-                        color: "#065f46",
-                        border: "1px solid #bbf7d0",
+                        background: "#f0f8ff",
+                        color: "#005580",
+                        border: "1px solid #7dd4ff",
                       },
                     },
                     error: {

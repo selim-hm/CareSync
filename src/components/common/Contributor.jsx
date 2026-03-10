@@ -44,11 +44,11 @@ const Button = ({
     "inline-flex items-center justify-center rounded-xl font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-300 transform hover:scale-105";
   const variants = {
     solid:
-      "bg-gradient-to-r from-emerald-500 to-teal-600 text-white hover:from-emerald-600 hover:to-teal-700 shadow-lg hover:shadow-xl",
+      "bg-gradient-to-r from-blue-500 to-cyan-600 text-white hover:from-blue-600 hover:to-cyan-700 shadow-lg hover:shadow-xl",
     outline:
-      "border-2 border-emerald-500/30 text-emerald-600 dark:text-emerald-400 hover:border-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 backdrop-blur-sm",
+      "border-2 border-blue-500/30 text-blue-600 dark:text-cyan-400 hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 backdrop-blur-sm",
     ghost:
-      "text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20",
+      "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 hover:bg-blue-50 dark:hover:bg-blue-900/20",
   };
   const sizes = {
     sm: "px-4 py-2 text-sm",
@@ -70,7 +70,7 @@ const Badge = ({ children, variant = "default", className = "" }) => {
   const variants = {
     default: "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300",
     primary:
-      "bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30",
+      "bg-blue-500/20 text-blue-700 dark:text-cyan-300 border border-blue-500/30",
     secondary:
       "bg-gray-500/20 text-gray-700 dark:text-gray-300 border border-gray-500/30",
   };
@@ -112,7 +112,7 @@ const getLevelBadge = (contributions) => {
     return {
       icon: <Award className="h-4 w-4" />,
       text: "Contributor",
-      color: "bg-gradient-to-r from-emerald-500 to-teal-600 text-white",
+      color: "bg-gradient-to-r from-blue-500 to-cyan-600 text-white",
       level: 1,
       requirement: "1-14",
     };
@@ -157,7 +157,7 @@ const ContributorAvatar = ({ contributor, size = "md" }) => {
 
   return (
     <div
-      className={`${sizes[size]} rounded-full overflow-hidden bg-gradient-to-r from-emerald-500/20 to-teal-500/20 flex items-center justify-center ring-4 ring-emerald-500/30 group-hover:ring-emerald-500/60 transition-all duration-300`}
+      className={`${sizes[size]} rounded-full overflow-hidden bg-gradient-to-r from-blue-500/20 to-cyan-500/20 flex items-center justify-center ring-4 ring-blue-500/30 group-hover:ring-blue-500/60 transition-all duration-300`}
     >
       <img
         src={contributor.avatar_url}
@@ -172,7 +172,7 @@ const ContributorAvatar = ({ contributor, size = "md" }) => {
           }
         }}
       />
-      <div className="hidden w-full h-full items-center justify-center text-lg font-bold text-emerald-300">
+      <div className="hidden w-full h-full items-center justify-center text-lg font-bold text-cyan-300">
         {contributor.login.charAt(0).toUpperCase()}
       </div>
     </div>
@@ -186,7 +186,7 @@ const LoadingSkeleton = () => (
       {Array.from({ length: 4 }).map((_, i) => (
         <div
           key={i}
-          className="p-8 text-center bg-gray-50 dark:bg-gray-900 backdrop-blur-md border border-emerald-500/20 rounded-2xl"
+          className="p-8 text-center bg-gray-50 dark:bg-gray-900 backdrop-blur-md border border-blue-500/20 rounded-2xl"
         >
           <Skeleton className="h-10 w-16 mx-auto mb-3" />
           <Skeleton className="h-4 w-24 mx-auto" />
@@ -222,7 +222,7 @@ const StatsCards = ({ stats }) => (
       {
         label: "Contributors",
         value: stats.total,
-        color: "text-emerald-600 dark:text-emerald-400",
+        color: "text-blue-600 dark:text-cyan-400",
         icon: Users,
       },
       {
@@ -246,10 +246,10 @@ const StatsCards = ({ stats }) => (
     ].map((stat, index) => (
       <div
         key={index}
-        className="group p-8 text-center bg-gray-50 dark:bg-gray-900 backdrop-blur-md rounded-2xl border border-emerald-500/20 hover:border-emerald-500/40 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 transform hover:scale-105"
+        className="group p-8 text-center bg-gray-50 dark:bg-gray-900 backdrop-blur-md rounded-2xl border border-blue-500/20 hover:border-blue-500/40 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 transform hover:scale-105"
       >
         <div className="flex items-center justify-center mb-4">
-          <div className="p-3 bg-emerald-500/20 rounded-full group-hover:bg-emerald-500/30 transition-colors duration-300">
+          <div className="p-3 bg-blue-500/20 rounded-full group-hover:bg-blue-500/30 transition-colors duration-300">
             <stat.icon className={`h-8 w-8 ${stat.color}`} />
           </div>
         </div>
@@ -283,7 +283,7 @@ const TopContributors = ({ contributors }) => (
         return (
           <div
             key={contributor.id}
-            className="group relative overflow-hidden bg-gray-50 dark:bg-gray-900 backdrop-blur-md border border-emerald-500/20 rounded-3xl hover:border-emerald-500/40 transition-all duration-500 transform hover:scale-105 hover:rotate-1"
+            className="group relative overflow-hidden bg-gray-50 dark:bg-gray-900 backdrop-blur-md border border-blue-500/20 rounded-3xl hover:border-blue-500/40 transition-all duration-500 transform hover:scale-105 hover:rotate-1"
           >
             {/* Rank badge */}
             <div className="absolute top-6 right-6 z-20">
@@ -291,17 +291,17 @@ const TopContributors = ({ contributors }) => (
             </div>
 
             {/* Glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
 
             <div className="relative z-10 p-8 text-center">
               <div className="relative mx-auto mb-6">
                 <ContributorAvatar contributor={contributor} size="lg" />
-                <div className="absolute -bottom-3 -right-3 w-10 h-10 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full flex items-center justify-center text-white font-black text-lg shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <div className="absolute -bottom-3 -right-3 w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center text-white font-black text-lg shadow-lg group-hover:scale-110 transition-transform duration-300">
                   {index + 1}
                 </div>
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-emerald-300 transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-cyan-300 transition-colors duration-300">
                 {contributor.login}
               </h3>
 
@@ -318,8 +318,8 @@ const TopContributors = ({ contributors }) => (
 
               <div className="bg-gray-100 dark:bg-gray-800 backdrop-blur-md rounded-2xl p-6 border border-gray-200 dark:border-gray-700 mb-6">
                 <div className="flex items-center justify-center gap-3">
-                  <GitBranch className="h-6 w-6 text-emerald-400" />
-                  <span className="text-3xl font-black text-emerald-400">
+                  <GitBranch className="h-6 w-6 text-cyan-400" />
+                  <span className="text-3xl font-black text-cyan-400">
                     {contributor.contributions}
                   </span>
                   <span className="text-gray-700 dark:text-gray-300 font-medium">
@@ -356,7 +356,7 @@ const LevelRequirements = ({ activeLevel, setActiveLevel }) => {
       requirement: "1-14 contributions",
       description:
         "Welcome to the community! Every journey starts with a single contribution.",
-      color: "from-emerald-500 to-teal-600",
+      color: "from-blue-500 to-cyan-600",
       benefits: [
         "Community recognition",
         "Contributor badge",
@@ -395,7 +395,7 @@ const LevelRequirements = ({ activeLevel, setActiveLevel }) => {
     <div className="mb-20">
       <div className="text-center mb-12">
         <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-gray-100 mb-4 flex items-center justify-center gap-3">
-          <Target className="h-10 w-10 text-emerald-400" />
+          <Target className="h-10 w-10 text-cyan-400" />
           Contribution Levels
         </h2>
         <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
@@ -409,11 +409,10 @@ const LevelRequirements = ({ activeLevel, setActiveLevel }) => {
           <div
             key={index}
             onClick={() => setActiveLevel(index + 1)}
-            className={`cursor-pointer transition-all duration-500 bg-gray-50 dark:bg-gray-900 backdrop-blur-md border rounded-3xl p-8 transform hover:scale-105 ${
-              activeLevel === index + 1
-                ? "border-emerald-500 shadow-2xl shadow-emerald-500/20 ring-2 ring-emerald-500/30"
-                : "border-emerald-500/20 hover:border-emerald-500/40"
-            }`}
+            className={`cursor-pointer transition-all duration-500 bg-gray-50 dark:bg-gray-900 backdrop-blur-md border rounded-3xl p-8 transform hover:scale-105 ${activeLevel === index + 1
+              ? "border-blue-500 shadow-2xl shadow-blue-500/20 ring-2 ring-blue-500/30"
+              : "border-blue-500/20 hover:border-blue-500/40"
+              }`}
           >
             <div className="text-center mb-6">
               <div
@@ -424,7 +423,7 @@ const LevelRequirements = ({ activeLevel, setActiveLevel }) => {
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                 {level.level}
               </h3>
-              <p className="text-lg font-semibold text-emerald-500 dark:text-emerald-400 mb-4">
+              <p className="text-lg font-semibold text-blue-500 dark:text-cyan-400 mb-4">
                 {level.requirement}
               </p>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -434,7 +433,7 @@ const LevelRequirements = ({ activeLevel, setActiveLevel }) => {
 
             <div className="space-y-4">
               <h4 className="font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2">
-                <Star className="h-5 w-5 text-emerald-400" />
+                <Star className="h-5 w-5 text-cyan-400" />
                 Benefits:
               </h4>
               <ul className="space-y-3">
@@ -443,8 +442,8 @@ const LevelRequirements = ({ activeLevel, setActiveLevel }) => {
                     key={i}
                     className="flex items-center gap-3 text-gray-700 dark:text-gray-300"
                   >
-                    <div className="flex-shrink-0 w-6 h-6 bg-emerald-500/20 rounded-full flex items-center justify-center">
-                      <Check className="h-4 w-4 text-emerald-400" />
+                    <div className="flex-shrink-0 w-6 h-6 bg-blue-500/20 rounded-full flex items-center justify-center">
+                      <Check className="h-4 w-4 text-cyan-400" />
                     </div>
                     {benefit}
                   </li>
@@ -459,13 +458,13 @@ const LevelRequirements = ({ activeLevel, setActiveLevel }) => {
 };
 
 // Leaderboard Table component with dark/light mode
-const LeaderboardTable = ({ contributors, loading ,searchUser , setSearchUser}) => (
+const LeaderboardTable = ({ contributors, loading, searchUser, setSearchUser }) => (
   <div className="mb-20">
-    <div className="bg-gray-50 dark:bg-gray-900 backdrop-blur-md border border-emerald-500/20 rounded-3xl overflow-hidden">
-      <div className="p-8 border-b flex item-center flex-col sm:flex-row border-emerald-500/20">
+    <div className="bg-gray-50 dark:bg-gray-900 backdrop-blur-md border border-blue-500/20 rounded-3xl overflow-hidden">
+      <div className="p-8 border-b flex item-center flex-col sm:flex-row border-blue-500/20">
         <div className="flex-1 ">
           <h2 className="text-3xl font-black text-gray-900 dark:text-gray-100 flex items-center gap-3 mb-2">
-            <TrendingUp className="h-8 w-8 text-emerald-400" />
+            <TrendingUp className="h-8 w-8 text-cyan-400" />
             Contributors Leaderboard
           </h2>
           <p className="text-gray-600 ml-8 dark:text-gray-400 text-lg">
@@ -473,16 +472,16 @@ const LeaderboardTable = ({ contributors, loading ,searchUser , setSearchUser}) 
           </p>
         </div>
         <div className="relative w-full max-w-md flex-1 mt-4 sm:mt-0 sm:ml-4">
-          
+
           <Search className="absolute inset-y-0 left-4 top-3.5 flex items-center w-5 h-5 text-gray-500 dark:text-gray-300" />
           <input
-            className="w-full rounded-full pl-12 pr-4 py-3 text-gray-700 dark:text-gray-100 bg-white/80 dark:bg-green-800/60 border border-green-300 dark:border-green-700 shadow-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full rounded-full pl-12 pr-4 py-3 text-gray-700 dark:text-gray-100 bg-white/80 dark:bg-cyan-800/60 border border-cyan-300 dark:border-cyan-700 shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
             type="search"
             placeholder="Search Contributer..."
             value={searchUser}
-            onChange={(e) => {setSearchUser(e.target.value)}}
-            
-          /> 
+            onChange={(e) => { setSearchUser(e.target.value) }}
+
+          />
         </div>
       </div>
 
@@ -502,7 +501,7 @@ const LeaderboardTable = ({ contributors, loading ,searchUser , setSearchUser}) 
         ) : (
           <table className="w-full">
             <thead className="bg-gray-100 dark:bg-gray-800">
-              <tr className="border-b border-emerald-500/20">
+              <tr className="border-b border-blue-500/20">
                 <th className="px-8 py-6 text-left text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                   Rank
                 </th>
@@ -520,7 +519,7 @@ const LeaderboardTable = ({ contributors, loading ,searchUser , setSearchUser}) 
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-emerald-500/10">
+            <tbody className="divide-y divide-blue-500/10">
               {contributors.map((contributor, index) => {
                 const badge = getLevelBadge(contributor.contributions);
                 return (
@@ -592,7 +591,7 @@ const LeaderboardTable = ({ contributors, loading ,searchUser , setSearchUser}) 
 
 export default function Contributors() {
   const [contributors, setContributors] = useState([]);
-  const [searchUser , setSearchUser] = useState("");
+  const [searchUser, setSearchUser] = useState("");
   const [lastUpdated, setLastUpdated] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -628,8 +627,8 @@ export default function Contributors() {
       allContributors.sort((a, b) => b.contributions - a.contributions);
 
       // on searching it will comes with real rank 
-      const rankWiseContributors = allContributors.map((c , index) =>({
-        ...c , rank : index + 1,
+      const rankWiseContributors = allContributors.map((c, index) => ({
+        ...c, rank: index + 1,
       }))
 
       setContributors(rankWiseContributors);
@@ -645,7 +644,7 @@ export default function Contributors() {
     }
   };
 
-    
+
   useEffect(() => {
     loadData();
   }, []);
@@ -676,9 +675,9 @@ export default function Contributors() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white relative overflow-hidden">
       {/* Background effects - subtle for light mode, more prominent for dark mode */}
-      <div className="absolute top-20 left-1/4 w-[400px] h-[400px] bg-emerald-500/10 dark:bg-emerald-500/20 blur-[150px] rounded-full animate-pulse" />
-      <div className="absolute bottom-20 right-1/4 w-[300px] h-[300px] bg-teal-500/10 dark:bg-teal-500/15 blur-[120px] rounded-full animate-pulse" />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/5 blur-[200px] rounded-full" />
+      <div className="absolute top-20 left-1/4 w-[400px] h-[400px] bg-blue-500/10 dark:bg-blue-500/20 blur-[150px] rounded-full animate-pulse" />
+      <div className="absolute bottom-20 right-1/4 w-[300px] h-[300px] bg-cyan-500/10 dark:bg-cyan-500/15 blur-[120px] rounded-full animate-pulse" />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/5 blur-[200px] rounded-full" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-20 py-24 relative z-10">
         {/* Home Button */}
@@ -690,7 +689,7 @@ export default function Contributors() {
         >
           <Link
             to="/"
-            className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 dark:border-gray-700/50 text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 group"
+            className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 dark:border-gray-700/50 text-blue-600 dark:text-cyan-400 hover:text-blue-700 dark:hover:text-cyan-300 hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 group"
           >
             <motion.div
               whileHover={{ x: -2 }}
@@ -704,34 +703,32 @@ export default function Contributors() {
         {/* Header Section */}
         <div className="text-center mb-20">
           <a
-            href="https://github.com/akathedeveloper/CareSync"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 py-3 px-6 rounded-full bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/30 font-bold text-emerald-600 dark:text-emerald-400 shadow-lg hover:shadow-emerald-500/20 hover:scale-105 transition-all duration-300 mb-8 backdrop-blur-md"
+            href="#contributors"
+            className="inline-flex items-center gap-2 py-3 px-6 rounded-full bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/30 font-bold text-blue-600 dark:text-cyan-400 shadow-lg hover:shadow-blue-500/20 hover:scale-105 transition-all duration-300 mb-8 backdrop-blur-md"
           >
             <Flame className="h-6 w-6" />
-            Open Source on GitHub
+            Meet Our Team
             <ArrowRight className="h-5 w-5" />
           </a>
 
-          <h1 className="text-5xl md:text-7xl font-black mb-8 bg-gradient-to-r from-gray-900 via-emerald-600 to-teal-600 dark:from-white dark:via-emerald-200 dark:to-teal-200 bg-clip-text text-transparent leading-tight">
+          <h1 className="text-5xl md:text-7xl font-black mb-8 bg-gradient-to-r from-gray-900 via-blue-600 to-cyan-600 dark:from-white dark:via-cyan-200 dark:to-cyan-200 bg-clip-text text-transparent leading-tight">
             Our Amazing{" "}
-            <span className="bg-gradient-to-r from-emerald-500 to-teal-500 dark:from-emerald-400 dark:to-teal-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-500 to-cyan-500 dark:from-cyan-400 dark:to-cyan-400 bg-clip-text text-transparent\">
               Contributors
             </span>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-12 font-medium">
             Meet the talented individuals who are building CareSync. Their
-            dedication and passion make this open-source healthcare platform
+            dedication and passion make this healthcare platform
             possible, transforming patient care one contribution at a time.
           </p>
 
           {/* Last Updated Banner */}
           {lastUpdated && (
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-3 bg-gray-100 dark:bg-gray-800 backdrop-blur-md px-6 py-3 rounded-full border border-emerald-500/30 hover:border-emerald-500/50 transition-colors duration-300">
-                <Clock className="h-5 w-5 text-emerald-500 dark:text-emerald-400" />
+              <div className="inline-flex items-center gap-3 bg-gray-100 dark:bg-gray-800 backdrop-blur-md px-6 py-3 rounded-full border border-blue-500/30 hover:border-blue-500/50 transition-colors duration-300">
+                <Clock className="h-5 w-5 text-blue-500 dark:text-cyan-400" />
                 <span className="text-gray-700 dark:text-gray-300 font-medium">
                   Last updated: {formatDate(lastUpdated)}
                 </span>
@@ -768,16 +765,16 @@ export default function Contributors() {
         )}
 
         {/* Call to Action Section */}
-        <section className="text-center space-y-12 bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-transparent backdrop-blur-md rounded-3xl p-12 md:p-16 border border-emerald-500/20 relative overflow-hidden">
+        <section className="text-center space-y-12 bg-gradient-to-br from-blue-500/10 via-cyan-500/5 to-transparent backdrop-blur-md rounded-3xl p-12 md:p-16 border border-blue-500/20 relative overflow-hidden">
           {/* Background decoration */}
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-emerald-500/5 to-transparent transform -skew-y-1" />
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-blue-500/5 to-transparent transform -skew-y-1" />
 
           <div className="relative z-10">
             <div className="space-y-8 mb-12">
               <h3 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-white leading-tight">
                 Ready to Join the
                 <br className="hidden sm:block" />
-                <span className="bg-gradient-to-r from-emerald-500 to-teal-500 dark:from-emerald-400 dark:to-teal-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-500 to-cyan-500 dark:from-cyan-400 dark:to-cyan-400 bg-clip-text text-transparent">
                   Adventure?
                 </span>
               </h3>
@@ -815,7 +812,7 @@ export default function Contributors() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-full sm:w-auto text-xl px-12 py-6 border-2 border-emerald-500/30 hover:border-emerald-500"
+                  className="w-full sm:w-auto text-xl px-12 py-6 border-2 border-blue-500/30 hover:border-blue-500"
                 >
                   <Code className="w-6 h-6 mr-3" />
                   Find Your First Issue
@@ -850,7 +847,7 @@ export default function Contributors() {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="group p-8 bg-gray-50 dark:bg-gray-900 backdrop-blur-md border border-gray-200 dark:border-gray-700 rounded-2xl hover:border-emerald-500/30 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 transform hover:scale-105"
+                  className="group p-8 bg-gray-50 dark:bg-gray-900 backdrop-blur-md border border-gray-200 dark:border-gray-700 rounded-2xl hover:border-blue-500/30 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 transform hover:scale-105"
                 >
                   <div className="flex items-center justify-center mb-6">
                     <div

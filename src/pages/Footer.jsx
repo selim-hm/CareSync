@@ -150,14 +150,6 @@ export default function Footer() {
               >
                 {t("nav.contact")}
               </button>
-              <a
-                href="https://github.com/akathedeveloper/CareSync"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-gray-900 dark:hover:text-gray-300"
-              >
-                {t("footer.openSource")}
-              </a>
             </div>
             <div className="flex items-center gap-2 mt-3">
               <span>{t("footer.madeWith")}</span>

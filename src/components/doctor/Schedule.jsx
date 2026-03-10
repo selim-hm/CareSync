@@ -4,7 +4,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { findPatientById } from "../../data/dummyData";
 
 const statusColors = {
-  confirmed: "bg-green-500",
+  confirmed: "bg-blue-500",
   pending: "bg-yellow-500",
   cancelled: "bg-red-500",
   rejected: "bg-red-500",
@@ -108,7 +108,7 @@ const Schedule = () => {
               <>
                 <Button
                   onClick={() => updateAppointmentStatus(apt.id, "Confirmed")}
-                  className="bg-green-500 hover:bg-green-600"
+                  className="bg-blue-500 hover:bg-blue-600"
                 >
                   Accept
                 </Button>

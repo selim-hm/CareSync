@@ -45,7 +45,7 @@ const Patients = () => {
   return (
     <div className="p-8 bg-gradient-to-b from-green-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 rounded-xl shadow-lg min-h-screen">
       <header className="mb-8 text-center">
-        <h2 className="text-4xl font-extrabold text-green-700 dark:text-green-100">
+        <h2 className="text-4xl font-extrabold text-blue-700 dark:text-blue-100">
           Your Patients
         </h2>
         <p className="text-gray-600 dark:text-gray-300 mt-2">
@@ -60,13 +60,12 @@ const Patients = () => {
               className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 flex flex-col gap-2 relative"
             >
               <div className="flex justify-between items-center mb-2">
-                <span className="font-bold text-lg text-green-700 dark:text-green-200">
+                <span className="font-bold text-lg text-blue-700 dark:text-blue-200">>
                   {patient.name}
                 </span>
                 <span
-                  className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                    statusColors[patient.status] || "bg-gray-100 text-gray-800"
-                  }`}
+                  className={`px-3 py-1 rounded-full text-xs font-semibold ${statusColors[patient.status] || "bg-gray-100 text-gray-800"
+                    }`}
                 >
                   {patient.status}
                 </span>

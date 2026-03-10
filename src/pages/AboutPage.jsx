@@ -5,21 +5,13 @@ import {
   UserGroupIcon,
   ShieldCheckIcon,
   LightBulbIcon,
-  GlobeAltIcon,
-  CodeBracketIcon,
   StarIcon,
   CheckCircleIcon,
-  MapPinIcon,
-  EnvelopeIcon,
-  PhoneIcon,
   Bars3Icon,
   SunIcon,
   MoonIcon,
-  BeakerIcon,
-  UsersIcon
+  BeakerIcon
 } from '@heroicons/react/24/outline';
-import { GitBranch } from "lucide-react";
-import GitHubStatsSection from '../components/common/GitHubStatsSection';
 import { motion } from 'framer-motion';
 import Footer from './Footer';
 import { useTheme } from "../contexts/ThemeContext";
@@ -39,12 +31,6 @@ const AboutPage = () => {
 
   const values = [
     {
-      icon: HeartIcon,
-      title: "Open Source First",
-      description: "Built by the community, for the community. Every line of code is transparent and accessible.",
-      color: "from-red-500 to-pink-500"
-    },
-    {
       icon: ShieldCheckIcon,
       title: "Security & Privacy",
       description: "Healthcare data security is paramount. HIPAA compliant with robust encryption and privacy controls.",
@@ -53,56 +39,62 @@ const AboutPage = () => {
     {
       icon: LightBulbIcon,
       title: "Innovation",
-      description: "Leveraging cutting-edge technology to solve real healthcare challenges through collaborative development.",
+      description: "Leveraging cutting-edge technology to solve real healthcare challenges and improve patient care.",
       color: "from-yellow-500 to-orange-500"
     },
     {
       icon: UserGroupIcon,
-      title: "Community Driven",
-      description: "Powered by GSSoC'25 participants and healthcare professionals working together.",
+      title: "Accessibility",
+      description: "Making healthcare management tools accessible to providers and patients worldwide.",
       color: "from-blue-500 to-indigo-500"
+    },
+    {
+      icon: HeartIcon,
+      title: "Patient Care",
+      description: "Dedicated to improving healthcare outcomes through intelligent, user-friendly technology.",
+      color: "from-rose-500 to-pink-500"
     }
   ];
 
-  // Real open source maintainers and contributors
+  // Project team and experts
   const team = [
     {
       name: "Adhiraj (Admin)",
       role: "Project Maintainer",
       image: "👨‍💻",
-      bio: "Leading the CareSync open source initiative under GSSoC'25",
-      specialties: ["Open Source", "Healthcare Tech", "Community Building"]
+      bio: "Leading the CareSync healthcare management platform",
+      specialties: ["Healthcare Tech", "Product Development", "Team Leadership"]
     },
     {
-      name: "Core Contributors",
-      role: "Development Team",
+      name: "Development Team",
+      role: "Engineers",
       image: "👥",
-      bio: "Passionate developers contributing to healthcare innovation",
+      bio: "Passionate developers building innovative healthcare solutions",
       specialties: ["React", "Node.js", "Healthcare APIs"]
     },
     {
-      name: "GSSoC Participants",
-      role: "Student Developers",
-      image: "🎓",
-      bio: "Students from around the globe contributing during GSSoC'25",
-      specialties: ["Full Stack", "UI/UX", "Testing"]
+      name: "Healthcare Experts",
+      role: "Domain Specialists",
+      image: "🩺",
+      bio: "Industry professionals ensuring best healthcare practices",
+      specialties: ["Clinical Workflow", "Healthcare Standards", "User Experience"]
     },
     {
-      name: "Healthcare Advisors",
-      role: "Domain Experts",
-      image: "👩‍⚕️",
-      bio: "Medical professionals guiding feature development",
-      specialties: ["Clinical Workflow", "Healthcare Standards", "User Experience"]
+      name: "Design Team",
+      role: "UX/UI Specialists",
+      image: "🎨",
+      bio: "Creating intuitive interfaces for healthcare professionals",
+      specialties: ["UI Design", "UX Research", "Accessibility"]
     }
   ];
 
-  // Realistic project milestones
+  // Project milestones
   const milestones = [
-    { year: "2024", title: "Project Inception", description: "CareSync started as an open source healthcare management solution" },
-    { year: "2025", title: "GSSoC Selection", description: "Selected as an official GSSoC'25 project for student contributions" },
-    { year: "2025", title: "First 35 Contributors", description: "Growing community of developers and healthcare enthusiasts" },
+    { year: "2024", title: "Project Inception", description: "CareSync launched as a comprehensive healthcare management solution" },
+    { year: "2025", title: "Platform Expansion", description: "Expanded features and capabilities for healthcare providers" },
+    { year: "2025", title: "Growing User Base", description: "Adoption by healthcare facilities and medical professionals" },
     { year: "2025", title: "Beta Release", description: "Launch of beta version with core healthcare management features" },
-    { year: "2025", title: "Community Growth", description: "Expanding contributor base and feature set through open collaboration" }
+    { year: "2025", title: "Market Growth", description: "Continuous improvement and expansion of healthcare solutions" }
   ];
 
   const containerVariants = {
@@ -297,7 +289,7 @@ const AboutPage = () => {
               variants={itemVariants}
               className="inline-flex items-center bg-gradient-to-r from-emerald-100 to-teal-100 dark:from-emerald-900/30 dark:to-teal-900/30 text-emerald-700 dark:text-emerald-300 px-6 py-3 rounded-full text-sm font-semibold shadow-sm mb-8"
             >
-              🏥 Open Source Healthcare • GSSoC'25 Project
+              🏥 Professional Healthcare Platform
             </motion.div>
 
             <motion.h1
@@ -314,14 +306,14 @@ const AboutPage = () => {
               variants={itemVariants}
               className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto mb-12 font-medium"
             >
-              An open source healthcare management platform built collaboratively by developers worldwide through GSSoC'25, connecting patients, doctors, and pharmacies with transparent, secure technology.
+              A comprehensive healthcare management platform connecting patients, doctors, and pharmacies with secure, reliable technology for better patient care.
             </motion.p>
 
             <motion.div
               variants={itemVariants}
               className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-8 text-base text-gray-600 dark:text-gray-400"
             >
-              {["Open Source Community", "GSSoC'25 Project", "MIT Licensed"].map((text, index) => (
+              {["HIPAA Compliant", "Secure Platform", "24/7 Support"].map((text, index) => (
                 <div key={index} className="flex items-center space-x-2">
                   <CheckCircleIcon className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                   <span className="font-medium">{text}</span>
@@ -334,17 +326,13 @@ const AboutPage = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center mt-8"
             >
               <motion.a
-                href="https://github.com/akathedeveloper/CareSync"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#features"
                 className="inline-flex items-center bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-4 rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                </svg>
-                View on GitHub
+                <StarIcon className="w-5 h-5 mr-2" />
+                Explore Features
               </motion.a>
 
               <motion.Link
@@ -381,7 +369,7 @@ const AboutPage = () => {
                 </div>
                 <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Our Mission</h3>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                  To democratize healthcare technology through open source collaboration, creating accessible tools that empower healthcare providers and improve patient outcomes worldwide.
+                  To provide accessible, reliable healthcare technology that empowers healthcare providers and improves patient outcomes worldwide.
                 </p>
               </div>
             </motion.div>
@@ -398,7 +386,7 @@ const AboutPage = () => {
                 </div>
                 <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Our Vision</h3>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                  A world where healthcare technology is transparent, collaborative, and accessible to all, built by a global community of developers and healthcare professionals working together.
+                  A world where healthcare technology is secure, innovative, and accessible to all healthcare providers and patients.
                 </p>
               </div>
             </motion.div>
@@ -406,8 +394,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* GitHub Stats Section - Using the API Component */}
-      <GitHubStatsSection />
+
 
       {/* Core Values Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-900">
@@ -429,7 +416,7 @@ const AboutPage = () => {
               variants={itemVariants}
               className="text-xl text-gray-600 dark:text-gray-300"
             >
-              The principles that drive our open source healthcare initiative
+              The principles that guide our healthcare platform
             </motion.p>
           </motion.div>
 
@@ -527,11 +514,11 @@ const AboutPage = () => {
 
           <motion.div
             className="text-center mt-12"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-            />
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          />
         </div>
       </section>
 
@@ -555,7 +542,7 @@ const AboutPage = () => {
               variants={itemVariants}
               className="text-xl text-gray-600 dark:text-gray-300"
             >
-              Key milestones in our open source journey
+              Key milestones in our healthcare platform
             </motion.p>
           </motion.div>
 
@@ -625,13 +612,13 @@ const AboutPage = () => {
               variants={itemVariants}
               className="text-4xl lg:text-5xl font-black text-white mb-8"
             >
-              Ready to Contribute to Open Source Healthcare?
+              Ready to Experience CareSync?
             </motion.h2>
             <motion.p
               variants={itemVariants}
               className="text-xl lg:text-2xl text-white/90 mb-12 font-medium leading-relaxed max-w-3xl mx-auto"
             >
-              Join our growing community of developers, designers, and healthcare professionals building the future of healthcare technology together.
+              Join healthcare professionals using our platform to improve patient care and streamline healthcare operations.
             </motion.p>
 
             <motion.div
@@ -639,14 +626,12 @@ const AboutPage = () => {
               className="flex flex-col sm:flex-row gap-6 justify-center mb-8"
             >
               <motion.a
-                href="https://github.com/akathedeveloper/CareSync"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contact"
                 className="bg-white text-emerald-600 px-10 py-4 rounded-xl hover:bg-gray-50 transition-all duration-300 font-bold text-lg shadow-xl hover:shadow-2xl"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Start Contributing
+                Contact Us
               </motion.a>
 
               <motion.Link
@@ -664,16 +649,16 @@ const AboutPage = () => {
               className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-12 text-white/80 font-medium"
             >
               <div className="flex items-center space-x-2">
-                <CodeBracketIcon className="h-5 w-5" />
-                <span>MIT Licensed</span>
+                <ShieldCheckIcon className="h-5 w-5" />
+                <span>HIPAA Certified</span>
               </div>
               <div className="flex items-center space-x-2">
                 <UserGroupIcon className="h-5 w-5" />
-                <span>GSSoC'25 Project</span>
+                <span>Professional Team</span>
               </div>
               <div className="flex items-center space-x-2">
                 <HeartIcon className="h-5 w-5" />
-                <span>Community Driven</span>
+                <span>Patient Focused</span>
               </div>
             </motion.div>
           </motion.div>

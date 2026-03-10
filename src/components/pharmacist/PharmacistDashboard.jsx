@@ -1,19 +1,26 @@
 // src/components/pharmacist/PharmacistDashboard.jsx
 import React, { useState } from 'react';
-import { 
-  ClipboardDocumentListIcon, 
-  CheckCircleIcon, 
+import { useAuth } from '../../contexts/AuthContext';
+import {
+  ClipboardDocumentListIcon,
+  CheckCircleIcon,
   ClockIcon,
   TruckIcon,
   MagnifyingGlassIcon
 } from '@heroicons/react/24/outline';
 
 const PharmacistDashboard = () => {
+  const { user } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
+
+  console.log("✅ PharmacistDashboard loaded successfully!");
+  console.log("User:", user);
+  console.log("User role:", user?.role);
+  console.log("User ID:", user?.id);
 
   const stats = [
     { name: "Pending Orders", value: "12", icon: ClockIcon, color: "text-yellow-600 dark:text-yellow-400", bgColor: "bg-yellow-100 dark:bg-yellow-900/30" },
-    { name: "Completed Today", value: "28", icon: CheckCircleIcon, color: "text-green-600 dark:text-green-400", bgColor: "bg-green-100 dark:bg-green-900/30" },
+    { name: "Completed Today", value: "28", icon: CheckCircleIcon, color: "text-blue-600 dark:text-cyan-400", bgColor: "bg-blue-100 dark:bg-blue-900/30" },
     { name: "Total Prescriptions", value: "156", icon: ClipboardDocumentListIcon, color: "text-blue-600 dark:text-blue-400", bgColor: "bg-blue-100 dark:bg-blue-900/30" },
     { name: "Out for Delivery", value: "8", icon: TruckIcon, color: "text-purple-600 dark:text-purple-400", bgColor: "bg-purple-100 dark:bg-purple-900/30" },
   ];
@@ -117,7 +124,7 @@ const PharmacistDashboard = () => {
                 <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Pending Prescription Orders</h3>
                 <p className="text-gray-600 dark:text-gray-400 mt-1">{filteredPendingOrders.length} orders awaiting processing</p>
               </div>
-              <button className="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 text-sm font-semibold">
+              <button className="text-blue-600 dark:text-cyan-400 hover:text-blue-700 dark:hover:text-cyan-300 text-sm font-semibold">
                 View All Orders
               </button>
             </div>
@@ -130,7 +137,7 @@ const PharmacistDashboard = () => {
               <input
                 type="text"
                 placeholder="Search by Patient, Doctor, or Order ID..."
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -141,22 +148,21 @@ const PharmacistDashboard = () => {
             <div className="space-y-4">
               {filteredPendingOrders.length > 0 ? (
                 filteredPendingOrders.map((order) => (
-                  <div 
-                    key={order.id} 
-                    className="border border-gray-200 dark:border-gray-600 rounded-xl p-6 hover:border-emerald-300 dark:hover:border-emerald-600 transition-colors bg-gray-50 dark:bg-gray-700/50"
+                  <div
+                    key={order.id}
+                    className="border border-gray-200 dark:border-gray-600 rounded-xl p-6 hover:border-blue-300 dark:hover:border-blue-600 transition-colors bg-gray-50 dark:bg-gray-700/50"
                   >
                     <div className="flex justify-between items-start mb-4">
                       <div className="flex items-center space-x-3">
                         <span className="font-mono text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-lg font-medium">
                           {order.id}
                         </span>
-                        <span className={`px-3 py-1 text-xs font-semibold rounded-full ${
-                          order.priority === 'high' 
-                            ? 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300' :
-                          order.priority === 'normal' 
+                        <span className={`px-3 py-1 text-xs font-semibold rounded-full ${order.priority === 'high'
+                          ? 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300' :
+                          order.priority === 'normal'
                             ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' :
                             'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300'
-                        }`}>
+                          }`}>
                           {order.priority.toUpperCase()} PRIORITY
                         </span>
                       </div>
@@ -184,7 +190,7 @@ const PharmacistDashboard = () => {
                         {order.medicines.map((medicine, index) => (
                           <span
                             key={index}
-                            className="inline-block bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 px-3 py-2 rounded-lg text-sm font-medium"
+                            className="inline-block bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-cyan-300 px-3 py-2 rounded-lg text-sm font-medium"
                           >
                             {medicine}
                           </span>
@@ -196,7 +202,7 @@ const PharmacistDashboard = () => {
                       <button className="px-6 py-2 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors font-medium">
                         Review Details
                       </button>
-                      <button className="px-6 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 font-semibold">
+                      <button className="px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 font-semibold">
                         Process Order
                       </button>
                       {/* Delete Button */}
@@ -225,4 +231,3 @@ const PharmacistDashboard = () => {
 };
 
 export default PharmacistDashboard;
- 

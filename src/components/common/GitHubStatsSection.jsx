@@ -17,7 +17,7 @@ const GitHubStatsSection = () => {
   const fetchGitHubStats = async () => {
     try {
       const baseUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}`;
-      
+
       // Fetch main repository data
       const repoResponse = await fetch(baseUrl);
       const repoData = await repoResponse.json();
@@ -29,7 +29,7 @@ const GitHubStatsSection = () => {
       // Fetch contributors count
       const contributorsResponse = await fetch(`${baseUrl}/contributors?per_page=1&anon=true`);
       let contributorsCount = 0;
-      
+
       if (contributorsResponse.ok) {
         const linkHeader = contributorsResponse.headers.get('Link');
         if (linkHeader) {
@@ -44,7 +44,7 @@ const GitHubStatsSection = () => {
       // Fetch pull requests count
       const pullsResponse = await fetch(`${baseUrl}/pulls?state=all&per_page=1`);
       let pullsCount = 0;
-      
+
       if (pullsResponse.ok) {
         const linkHeader = pullsResponse.headers.get('Link');
         if (linkHeader) {
@@ -58,29 +58,29 @@ const GitHubStatsSection = () => {
 
       // Create stats array
       const fetchedStats = [
-        { 
-          label: 'GitHub Stars', 
-          value: repoData.stargazers_count || 0, 
-          suffix: '+', 
-          icon: StarIcon 
+        {
+          label: 'GitHub Stars',
+          value: repoData.stargazers_count || 0,
+          suffix: '+',
+          icon: StarIcon
         },
-        { 
-          label: 'Contributors', 
-          value: contributorsCount, 
-          suffix: '+', 
-          icon: UserGroupIcon 
+        {
+          label: 'Contributors',
+          value: contributorsCount,
+          suffix: '+',
+          icon: UserGroupIcon
         },
-        { 
-          label: 'Open Issues', 
-          value: repoData.open_issues_count || 0, 
-          suffix: '', 
-          icon: GitBranch 
+        {
+          label: 'Open Issues',
+          value: repoData.open_issues_count || 0,
+          suffix: '',
+          icon: GitBranch
         },
-        { 
-          label: 'Pull Requests', 
-          value: pullsCount, 
-          suffix: '+', 
-          icon: CodeBracketIcon 
+        {
+          label: 'Pull Requests',
+          value: pullsCount,
+          suffix: '+',
+          icon: CodeBracketIcon
         },
       ];
 
@@ -90,7 +90,7 @@ const GitHubStatsSection = () => {
       console.error('Error fetching GitHub stats:', err);
       setError(err.message);
       setLoading(false);
-      
+
       // Fallback to static data if API fails
       setStats([
         { label: 'GitHub Stars', value: 26, suffix: '+', icon: StarIcon },
@@ -103,10 +103,10 @@ const GitHubStatsSection = () => {
 
   useEffect(() => {
     fetchGitHubStats();
-    
+
     // Optional: Set up interval to refresh data periodically
     const interval = setInterval(fetchGitHubStats, 300000); // Refresh every 5 minutes
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -128,15 +128,15 @@ const GitHubStatsSection = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              Our Open Source Impact
+              Platform Statistics
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
               Loading real-time GitHub statistics...
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[1,2,3,4].map((index) => (
+            {[1, 2, 3, 4].map((index) => (
               <div key={index} className="text-center">
                 <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 animate-pulse">
                   <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-2xl mx-auto mb-6"></div>
@@ -156,7 +156,7 @@ const GitHubStatsSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-            Our Open Source Impact
+            Platform Statistics
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300">
             Real-time statistics from our GitHub repository
@@ -180,7 +180,7 @@ const GitHubStatsSection = () => {
                     <stat.icon className="h-8 w-8 text-white" />
                   </div>
                 </div>
-                
+
                 <div className="text-4xl lg:text-5xl font-black text-gray-900 dark:text-gray-100 mb-3">
                   {startCount && (
                     <CountUp
@@ -192,7 +192,7 @@ const GitHubStatsSection = () => {
                     />
                   )}
                 </div>
-                
+
                 <div className="text-gray-600 dark:text-gray-400 font-medium text-lg">
                   {stat.label}
                 </div>
@@ -213,7 +213,7 @@ const GitHubStatsSection = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
           </a>
-          
+
           <div className="text-sm text-gray-500 dark:text-gray-400 mt-2">
             Last updated: {new Date().toLocaleString()}
           </div>

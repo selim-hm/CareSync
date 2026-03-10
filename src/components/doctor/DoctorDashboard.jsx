@@ -20,6 +20,11 @@ const DoctorDashboard = () => {
   const { appointments } = useAppointments();
   const location = useLocation();
 
+  console.log("✅ DoctorDashboard loaded successfully!");
+  console.log("User:", user);
+  console.log("User role:", user?.role);
+  console.log("User ID:", user?.id);
+
   const doctorAppointments = appointments.filter(
     (apt) => apt.doctorId === user.id
   );
@@ -162,8 +167,8 @@ const DashboardOverview = ({
           value={
             appointments.length > 0
               ? `${Math.round(
-                  (confirmedAppointments.length / appointments.length) * 100
-                )}%`
+                (confirmedAppointments.length / appointments.length) * 100
+              )}%`
               : "0%"
           }
           description="Acceptance rate of appointments."

@@ -97,7 +97,7 @@ document.head.appendChild(style);
 export default function Blog() {
   const { t } = useTranslation();
   const [search, setSearch] = useState("");
-  const [expandedId, setExpandedId] = useState(null); 
+  const [expandedId, setExpandedId] = useState(null);
   const [filtered, setFiltered] = useState(posts);
   const [currentPage, setCurrentPage] = useState(1);
   const scrollContainerRef = useRef(null);
@@ -124,7 +124,7 @@ export default function Blog() {
   const scroll = (direction) => {
     const container = scrollContainerRef.current;
     if (container) {
-      const scrollAmount = 400; 
+      const scrollAmount = 400;
       container.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -133,7 +133,7 @@ export default function Blog() {
   };
 
   const toggleExpand = (id) => {
-    setExpandedId(expandedId === id ? null : id); 
+    setExpandedId(expandedId === id ? null : id);
   };
 
   useEffect(() => {
@@ -155,14 +155,14 @@ export default function Blog() {
         {/* Back Button */}
         <Link
           to="/"
-          className="fixed md:absolute z-10 mt-4 md:mt-12 top-4 md:top-6 left-4 md:left-6 flex items-center gap-2 font-semibold text-emerald-500 hover:text-teal-500 hover:scale-105 transition-transform rounded-full p-2 md:p-0"
+          className="fixed md:absolute z-10 mt-4 md:mt-12 top-4 md:top-6 left-4 md:left-6 flex items-center gap-2 font-semibold text-blue-500 hover:text-cyan-500 hover:scale-105 transition-transform rounded-full p-2 md:p-0"
         >
           <ArrowLeft className="w-4 h-4 md:w-5 md:h-5" />
           <span className="hidden md:inline">Back</span>
         </Link>
 
         {/* Page Title */}
-        <h1 className="text-5xl font-extrabold text-center leading-relaxed bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent mb-12 transition-all duration-300 hover:from-emerald-600 hover:to-teal-600 dark:hover:from-emerald-300 dark:hover:to-teal-500 cursor-pointer">
+        <h1 className="text-5xl font-extrabold text-center leading-relaxed bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent mb-12 transition-all duration-300 hover:from-blue-600 hover:to-cyan-600 dark:hover:from-blue-300 dark:hover:to-cyan-500 cursor-pointer">
           {t("blog.title", "Our Blog")}
         </h1>
 
@@ -174,9 +174,9 @@ export default function Blog() {
               placeholder={t("blog.searchPlaceholder", "Search blogs by title or author...")}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-full pl-12 pr-4 py-3 text-gray-900 dark:text-white bg-white dark:bg-emerald-400/10 border border-emerald-400 dark:border-emerald-500 shadow-lg focus:outline-none focus:ring-4 focus:ring-emerald-400/30 transition duration-300 placeholder-gray-400 dark:placeholder-emerald-300 hover:border-emerald-500"
+              className="w-full rounded-full pl-12 pr-4 py-3 text-gray-900 dark:text-white bg-white dark:bg-blue-400/10 border border-blue-400 dark:border-blue-500 shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-400/30 transition duration-300 placeholder-gray-400 dark:placeholder-blue-300 hover:border-blue-500"
             />
-            <Search className="absolute left-4 top-3.5 w-5 h-5 text-emerald-500 dark:text-emerald-400" />
+            <Search className="absolute left-4 top-3.5 w-5 h-5 text-blue-500 dark:text-blue-400" />
           </div>
         </div>
 
@@ -186,7 +186,7 @@ export default function Blog() {
           {/* Left scroll button */}
           <button
             onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-r from-emerald-500 to-teal-600 p-3 rounded-full shadow-lg text-white hover:from-emerald-600 hover:to-teal-700 transition-all"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-r from-blue-500 to-cyan-600 p-3 rounded-full shadow-lg text-white hover:from-blue-600 hover:to-cyan-700 transition-all"
             aria-label="Scroll left"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -208,7 +208,7 @@ export default function Blog() {
                 return (
                   <div
                     key={post.id}
-                    className="mt-6 rounded-xl overflow-hidden shadow-md bg-white dark:bg-[#061C2B] border border-emerald-400 dark:border-emerald-700 hover:shadow-lg hover:scale-[1.03] transition-all duration-300 flex-none w-[350px] snap-center"
+                    className="mt-6 rounded-xl overflow-hidden shadow-md bg-white dark:bg-[#061C2B] border border-blue-400 dark:border-blue-700 hover:shadow-lg hover:scale-[1.03] transition-all duration-300 flex-none w-[350px] snap-center"
                   >
                     <img
                       src={post.image}

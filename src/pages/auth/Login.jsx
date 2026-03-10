@@ -68,15 +68,41 @@ const Login = () => {
     try {
       setError("");
       setLoading(true);
+      console.log("🔐 Login attempt:", { email: formData.email, role: formData.role });
+
       const result = await login(formData.email, formData.password, formData.role);
-      if (result.success && result.user) {
-        navigate(`/${result.user.role}`);
+      console.log("📦 Login result:", result);
+
+      if (result && result.success && result.user) {
+        console.log("✅ Login successful!");
+        console.log("User object:", result.user);
+        console.log("User email:", result.user.email);
+        console.log("User role:", result.user.role);
+
+        if (!result.user.role) {
+          console.error("🔴 CRITICAL: User role is undefined after successful login!");
+          setError("خطأ: لم يتم تحديد دور المستخدم");
+          setLoading(false);
+          return;
+        }
+
+        console.log(`🎯 Role confirmed: "${result.user.role}", preparing redirect...`);
+        toast.success("تم تسجيل الدخول بنجاح", { duration: 1500 });
+
+        // Use setTimeout to ensure state updates are complete
+        setTimeout(() => {
+          const redirectPath = `/${result.user.role}`;
+          console.log(`🔀 Executing navigation to: ${redirectPath}`);
+          navigate(redirectPath);
+        }, 500);
       } else {
-        navigate("/");
+        console.error("❌ Login returned unexpected result:", result);
+        setError("فشل تسجيل الدخول. حاول مرة أخرى.");
+        setLoading(false);
       }
     } catch (err) {
-      setError(t("login.error") + ": " + err.message);
-    } finally {
+      console.error("💥 Login error caught:", err);
+      setError(err.message || "حدث خطأ أثناء محاولة تسجيل الدخول");
       setLoading(false);
     }
   };
@@ -85,22 +111,23 @@ const Login = () => {
     try {
       setError("");
       setLoading(true);
-     const user = await loginWithGoogle();
-     if (user) {
-      toast.success("Google login successful! Redirecting...", {
-        duration: 3000,
-        icon: "🎉",
-      });
+      const user = await loginWithGoogle();
+      if (user) {
+        toast.success("Google login successful! Redirecting...", {
+          duration: 3000,
+          icon: "🎉",
+        });
 
-      // Navigate after a short delay so toast can appear
-      
-       navigate(`/${user.role || "home"}`);  
-      
-     }
+        // Navigate after a short delay so toast can appear
+
+        navigate(`/${user.role || "home"}`);
+
+      }
     } catch (err) {
       setError(t("login.errorGoogle") + ": " + err.message);
     } finally {
-    setLoading(false)};
+      setLoading(false)
+    };
   };
 
   return (
@@ -278,16 +305,16 @@ const Login = () => {
             </motion.div>
 
             {/* Submit */}
-           <motion.button
-  type="submit"
-  disabled={loading}
-  className="w-full flex items-center justify-center gap-2 py-3.5 px-6 text-base font-semibold rounded-2xl text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 disabled:opacity-50 shadow-xl transition-all duration-300"
-  whileHover={{ scale: loading ? 1 : 1.03 }}
-  whileTap={{ scale: loading ? 1 : 0.97 }}
-  variants={itemVariants}
->
-  {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : t("login.submit")}
-</motion.button>
+            <motion.button
+              type="submit"
+              disabled={loading}
+              className="w-full flex items-center justify-center gap-2 py-3.5 px-6 text-base font-semibold rounded-2xl text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 disabled:opacity-50 shadow-xl transition-all duration-300"
+              whileHover={{ scale: loading ? 1 : 1.03 }}
+              whileTap={{ scale: loading ? 1 : 0.97 }}
+              variants={itemVariants}
+            >
+              {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : t("login.submit")}
+            </motion.button>
 
 
             {/* Google */}

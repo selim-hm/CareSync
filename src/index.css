@@ -195,22 +195,22 @@
   /* Keep existing visual palette; provide single-source utility classes
      to replace scattered gradient/color repetitions without altering hues. */
   .gradient-accent {
-    @apply bg-gradient-to-r from-emerald-500 to-teal-600 text-white hover:from-emerald-600 hover:to-teal-700;
+    @apply bg-gradient-to-r from-blue-500 to-cyan-600 text-white hover:from-blue-600 hover:to-cyan-700;
   }
   .gradient-accent-alt {
-    @apply bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700;
+    @apply bg-gradient-to-r from-blue-600 to-sky-600 text-white hover:from-blue-700 hover:to-sky-700;
   }
   .btn-accent-gradient {
-    @apply gradient-accent px-4 py-2 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500;
+    @apply gradient-accent px-4 py-2 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500;
   }
   .btn-accent-gradient-alt {
-    @apply gradient-accent-alt px-6 py-3 rounded-xl font-medium transition-all duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-600;
+    @apply gradient-accent-alt px-6 py-3 rounded-xl font-medium transition-all duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600;
   }
   /* ---------------------------------------------------------------------- */
 
   /* Healthcare-specific styles */
   .status-normal {
-    @apply bg-green-100 text-green-800 px-2 py-1 text-xs font-medium rounded-full dark:bg-green-900/30 dark:text-green-300;
+    @apply bg-blue-100 text-blue-800 px-2 py-1 text-xs font-medium rounded-full dark:bg-blue-900/30 dark:text-blue-300;
   }
 
   .status-warning {

@@ -14,8 +14,8 @@
     "minimal-ui"
   ],
   "orientation": "any",
-  "background_color": "#d1fae5",
-  "theme_color": "#059669",
+  "background_color": "#e0f4ff",
+  "theme_color": "#0098DA",
   "icons": [
     {
       "src": "/favicon-16x16.png",
@@ -282,8 +282,15 @@
     {
       "action": "/upload",
       "accept": {
-        "image/*": [".jpg", ".jpeg", ".png", ".gif"],
-        "application/pdf": [".pdf"]
+        "image/*": [
+          ".jpg",
+          ".jpeg",
+          ".png",
+          ".gif"
+        ],
+        "application/pdf": [
+          ".pdf"
+        ]
       }
     }
   ],
@@ -298,7 +305,10 @@
       "files": [
         {
           "name": "file",
-          "accept": ["image/*", "application/pdf"]
+          "accept": [
+            "image/*",
+            "application/pdf"
+          ]
         }
       ]
     }

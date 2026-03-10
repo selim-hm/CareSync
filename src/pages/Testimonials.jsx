@@ -168,7 +168,7 @@ export default function Testimonials() {
             scale: [1, 1.2, 1],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-emerald-400/20 to-emerald-600/10 dark:from-emerald-400/10 dark:to-emerald-600/5 rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-cyan-400/20 to-blue-600/10 dark:from-cyan-400/10 dark:to-blue-600/5 rounded-full blur-3xl"
         />
 
         <motion.div
@@ -199,7 +199,7 @@ export default function Testimonials() {
               ease: "easeInOut",
               delay: i * 0.3,
             }}
-            className="absolute w-1 h-1 bg-emerald-400 dark:bg-emerald-300 rounded-full opacity-30"
+            className="absolute w-1 h-1 bg-cyan-400 dark:bg-cyan-300 rounded-full opacity-30"
             style={{
               left: `${10 + i * 7}%`,
               top: `${20 + (i % 3) * 20}%`,
@@ -223,7 +223,7 @@ export default function Testimonials() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 dark:from-emerald-400 dark:to-emerald-500 rounded-2xl mb-6 shadow-lg"
+            className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 rounded-2xl mb-6 shadow-lg"
           >
             <ChatBubbleLeftRightIcon className="w-8 h-8 text-white" />
           </motion.div>
@@ -252,8 +252,8 @@ export default function Testimonials() {
                 onHoverEnd={() => setHoveredCard(null)}
                 className="group relative px-4 py-6 flex h-full"
               >
-                <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 via-emerald-400/30 to-emerald-600/20 dark:from-emerald-400/10 dark:via-emerald-300/15 dark:to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-all duration-700 rounded-3xl blur-2xl scale-110" />
-                
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 via-cyan-400/30 to-blue-600/20 dark:from-cyan-400/10 dark:via-cyan-300/15 dark:to-blue-500/10 opacity-0 group-hover:opacity-100 transition-all duration-700 rounded-3xl blur-2xl scale-110" />
+
                 <div className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 shadow-xl dark:shadow-gray-900/50 transition-all duration-500 transform hover:-translate-y-4 hover:shadow-2xl border border-gray-200/50 dark:border-gray-700/50 h-full w-full flex flex-col min-h-[380px]">
                   <motion.div
                     animate={
@@ -262,7 +262,7 @@ export default function Testimonials() {
                         : {}
                     }
                     transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 dark:from-emerald-400 dark:to-emerald-500 rounded-2xl flex items-center justify-center shadow-lg"
+                    className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 rounded-2xl flex items-center justify-center shadow-lg"
                   >
                     <ChatBubbleLeftRightIcon className="w-6 h-6 text-white" />
                   </motion.div>
@@ -277,22 +277,21 @@ export default function Testimonials() {
                         transition={{ delay: 0.3 + i * 0.1, type: "spring", stiffness: 200 }}
                       >
                         <StarIcon
-                          className={`h-5 w-5 ${
-                            i < testimonial.rating
+                          className={`h-5 w-5 ${i < testimonial.rating
                               ? "text-yellow-400"
                               : "text-gray-300 dark:text-gray-600"
-                          } fill-current drop-shadow-sm`}
+                            } fill-current drop-shadow-sm`}
                         />
                       </motion.div>
                     ))}
                   </div>
 
                   <blockquote className="text-gray-700 dark:text-gray-200 mb-8 leading-relaxed text-base flex-grow relative">
-                    <span className="text-1xl text-emerald-500 dark:text-emerald-400 font-serif align-top mr-2">
+                    <span className="text-1xl text-blue-500 dark:text-cyan-400 font-serif align-top mr-2">
                       "
                     </span>
                     <span className="relative z-10 italic">{testimonial.content}</span>
-                    <span className="text-1xl text-emerald-500 dark:text-emerald-400 font-serif align-bottom ml-2">
+                    <span className="text-1xl text-blue-500 dark:text-cyan-400 font-serif align-bottom ml-2">
                       "
                     </span>
                   </blockquote>
@@ -302,7 +301,7 @@ export default function Testimonials() {
                       <motion.div
                         animate={hoveredCard === index ? { scale: [1, 1.05, 1] } : {}}
                         transition={{ duration: 2, repeat: Infinity }}
-                        className="w-14 h-14 bg-gradient-to-br from-emerald-100 to-emerald-200 dark:from-emerald-900/50 dark:to-emerald-800/50 rounded-2xl flex items-center justify-center mr-4 font-bold text-emerald-600 dark:text-emerald-400 text-lg shadow-lg border border-emerald-200/50 dark:border-emerald-700/50"
+                        className="w-14 h-14 bg-gradient-to-br from-blue-100 to-cyan-200 dark:from-blue-900/50 dark:to-blue-800/50 rounded-2xl flex items-center justify-center mr-4 font-bold text-blue-600 dark:text-cyan-400 text-lg shadow-lg border border-blue-200/50 dark:border-blue-700/50"
                       >
                         {testimonial.name
                           .split(" ")
@@ -316,7 +315,7 @@ export default function Testimonials() {
                       <div className="font-bold text-gray-900 dark:text-gray-100 text-lg mb-1">
                         {testimonial.name}
                       </div>
-                      <div className="text-sm text-emerald-600 dark:text-emerald-400 font-medium mb-1">
+                      <div className="text-sm text-blue-600 dark:text-cyan-400 font-medium mb-1">
                         {testimonial.role}
                       </div>
                       <div className="text-sm text-gray-500 dark:text-gray-400">
@@ -344,7 +343,7 @@ export default function Testimonials() {
               className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl shadow-xl dark:shadow-gray-900/50 rounded-2xl p-4 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50 group"
               aria-label={t("controls.prev", "Previous testimonials")}
             >
-              <ChevronLeftIcon className="h-6 w-6 text-gray-700 dark:text-gray-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors" />
+              <ChevronLeftIcon className="h-6 w-6 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors" />
             </motion.button>
 
             <motion.button
@@ -354,7 +353,7 @@ export default function Testimonials() {
               className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl shadow-xl dark:shadow-gray-900/50 rounded-2xl p-4 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50 group"
               aria-label={t("controls.next", "Next testimonials")}
             >
-              <ChevronRightIcon className="h-6 w-6 text-gray-700 dark:text-gray-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors" />
+              <ChevronRightIcon className="h-6 w-6 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors" />
             </motion.button>
           </div>
 
@@ -363,7 +362,7 @@ export default function Testimonials() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleAutoScroll}
-              className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300 font-medium"
+              className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors duration-300 font-medium"
             >
               {isAutoScrolling ? (
                 <PauseIcon className="h-5 w-5" />
@@ -385,7 +384,7 @@ export default function Testimonials() {
               <motion.div
                 animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="w-2 h-2 bg-emerald-500 dark:bg-emerald-400 rounded-full"
+                className="w-2 h-2 bg-blue-500 dark:bg-cyan-400 rounded-full"
               />
             )}
           </div>
@@ -402,16 +401,15 @@ export default function Testimonials() {
               className="relative overflow-hidden rounded-full transition-all duration-500"
             >
               <div
-                className={`h-3 rounded-full transition-all duration-500 ${
-                  index === currentSlide
-                    ? "w-10 bg-gradient-to-r from-emerald-500 to-emerald-600 shadow-lg"
+                className={`h-3 rounded-full transition-all duration-500 ${index === currentSlide
+                    ? "w-10 bg-gradient-to-r from-blue-500 to-blue-600 shadow-lg"
                     : "w-3 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
-                }`}
+                  }`}
               />
               {index === currentSlide && (
                 <motion.div
                   layoutId="activeIndicator"
-                  className="absolute inset-0 bg-emerald-400/50 rounded-full blur-sm"
+                  className="absolute inset-0 bg-cyan-400/50 rounded-full blur-sm"
                 />
               )}
             </motion.button>

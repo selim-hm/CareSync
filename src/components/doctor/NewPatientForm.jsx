@@ -65,12 +65,12 @@ const NewPatientForm = () => {
   return (
     <div className="p-8 bg-gradient-to-b from-green-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 rounded-xl shadow-lg min-h-screen">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-3xl font-extrabold text-green-700 dark:text-green-100">
+        <h2 className="text-3xl font-extrabold text-blue-700 dark:text-blue-100">
           New Patient
         </h2>
         <Link
           to="/doctor/patients"
-          className="text-sm px-4 py-2 rounded-md border border-emerald-300 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-gray-800"
+          className="text-sm px-4 py-2 rounded-md border border-blue-300 text-blue-700 dark:text-cyan-300 hover:bg-blue-50 dark:hover:bg-gray-800"
         >
           Back to Patients
         </Link>
@@ -150,7 +150,7 @@ const NewPatientForm = () => {
           <button
             type="submit"
             disabled={submitting}
-            className="px-6 py-2 rounded-md text-white font-semibold bg-emerald-600 hover:bg-emerald-700 disabled:opacity-60"
+            className="px-6 py-2 rounded-md text-white font-semibold bg-blue-600 hover:bg-blue-700 disabled:opacity-60"
           >
             {submitting ? "Creating..." : "Create Patient"}
           </button>

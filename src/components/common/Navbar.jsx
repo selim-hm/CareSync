@@ -97,12 +97,12 @@ const Navbar = () => {
   const menuItems = isAuthPage
     ? [{ name: t("nav.home"), id: "home" }]
     : [
-        { name: t("nav.home"), id: "home", isSection: true },
-        { name: t("nav.features"), id: "features", isSection: true },
-        { name: t("nav.blog"), path: "/blog", isSection: false },
-        { name: t("nav.testimonials"), id: "testimonials", isSection: true },
-        { name: t("nav.contact"), id: "contact-form", isSection: true },
-      ];
+      { name: t("nav.home"), id: "home", isSection: true },
+      { name: t("nav.features"), id: "features", isSection: true },
+      { name: t("nav.blog"), path: "/blog", isSection: false },
+      { name: t("nav.testimonials"), id: "testimonials", isSection: true },
+      { name: t("nav.contact"), id: "contact-form", isSection: true },
+    ];
 
   return (
     <nav className="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-800/50 z-50 shadow-sm">
@@ -123,7 +123,7 @@ const Navbar = () => {
                     className="w-full h-full transition  animate-beats"
                   />
                 </div>
-                <span className="ml-2 md:ml-3 font-bold text-emerald-600 dark:text-emerald-400 text-lg md:text-xl">
+                <span className="ml-2 md:ml-3 font-bold text-blue-600 dark:text-cyan-400 text-lg md:text-xl">
                   CareSync
                 </span>
               </div>
@@ -136,7 +136,7 @@ const Navbar = () => {
                   e.preventDefault();
                   navigate("/");
                 }}
-                className="hidden md:block text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium text-sm md:text-base"
+                className="hidden md:block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors font-medium text-sm md:text-base"
               >
                 {t("nav.home")}
               </a>
@@ -152,26 +152,24 @@ const Navbar = () => {
                   onClick={(e) => {
                     handleNavigation(item.id, item.isSection, item.path);
                   }}
-                  className={`relative transition-all duration-300 font-medium group px-2 py-1 rounded-md text-sm xl:text-base ${
-                    item.path
+                  className={`relative transition-all duration-300 font-medium group px-2 py-1 rounded-md text-sm xl:text-base ${item.path
                       ? location.pathname === item.path
-                        ? "text-emerald-600 dark:text-emerald-400 font-semibold drop-shadow-sm bg-emerald-50 dark:bg-emerald-900/20"
-                        : "text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-gray-50 dark:hover:bg-gray-800/50"
+                        ? "text-blue-600 dark:text-cyan-400 font-semibold drop-shadow-sm bg-blue-50 dark:bg-blue-900/20"
+                        : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 hover:bg-gray-50 dark:hover:bg-gray-800/50"
                       : activeSection === item.id
-                      ? "text-emerald-600 dark:text-emerald-400 font-semibold drop-shadow-sm bg-emerald-50 dark:bg-emerald-900/20"
-                      : "text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-gray-50 dark:hover:bg-gray-800/50"
-                  }`}
+                        ? "text-blue-600 dark:text-cyan-400 font-semibold drop-shadow-sm bg-blue-50 dark:bg-blue-900/20"
+                        : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 hover:bg-gray-50 dark:hover:bg-gray-800/50"
+                    }`}
                 >
                   {item.name}
                   <span
-                    className={`absolute left-0 -bottom-1 h-[2px] bg-emerald-600 transition-all duration-300 ${
-                      activeSection === item.id
+                    className={`absolute left-0 -bottom-1 h-[2px] bg-blue-600 transition-all duration-300 ${activeSection === item.id
                         ? "w-full"
                         : "w-0 group-hover:w-full"
-                    }`}
+                      }`}
                   />
                   {activeSection === item.id && (
-                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
                   )}
                 </a>
               ))}
@@ -207,7 +205,7 @@ const Navbar = () => {
               {user ? (
                 <Link
                   to={`/${user.role}`}
-                  className="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium text-sm"
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors font-medium text-sm"
                 >
                   {t("nav.dashboard")}
                 </Link>
@@ -215,7 +213,7 @@ const Navbar = () => {
                 <>
                   <Link
                     to="/login"
-                    className="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium text-sm"
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors font-medium text-sm"
                   >
                     {t("auth.signIn")}
                   </Link>
@@ -242,22 +240,19 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 ${
-          isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 ${isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
       >
         <div
-          className={`fixed inset-0 bg-black/20 dark:bg-black/40 transition-opacity duration-300 ${
-            isMobileMenuOpen ? "opacity-100" : "opacity-0"
-          }`}
+          className={`fixed inset-0 bg-black/20 dark:bg-black/40 transition-opacity duration-300 ${isMobileMenuOpen ? "opacity-100" : "opacity-0"
+            }`}
           onClick={() => setIsMobileMenuOpen(false)}
         />
 
         <div
           ref={mobileMenuRef}
-          className={`fixed right-0 top-20 w-64 bg-white dark:bg-gray-900 border-l border-gray-200 dark:border-gray-800 shadow-xl transform transition-transform duration-300 ease-in-out ${
-            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`fixed right-0 top-20 w-64 bg-white dark:bg-gray-900 border-l border-gray-200 dark:border-gray-800 shadow-xl transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
         >
           <div className="pt-4 pb-6">
             {menuItems.map((item) => (
@@ -265,16 +260,15 @@ const Navbar = () => {
                 key={item.id}
                 href={item.path ? item.path : `#${item.id}`}
                 className={`block py-3 px-6 transition-all duration-300 font-medium relative group
-                after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-emerald-600 after:scale-x-0 after:origin-center after:transition-transform after:duration-300
-                hover:after:scale-x-100 ${
-                  item.path
+                after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-blue-600 after:scale-x-0 after:origin-center after:transition-transform after:duration-300
+                hover:after:scale-x-100 ${item.path
                     ? location.pathname === item.path
-                      ? "text-emerald-600 dark:text-emerald-400 after:scale-x-100 bg-emerald-50 dark:bg-emerald-900/20 font-semibold"
-                      : "text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400"
+                      ? "text-blue-600 dark:text-cyan-400 after:scale-x-100 bg-blue-50 dark:bg-blue-900/20 font-semibold"
+                      : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400"
                     : activeSection === item.id
-                    ? "text-emerald-600 dark:text-emerald-400 font-semibold after:scale-x-100 bg-emerald-50 dark:bg-emerald-900/20"
-                    : "text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400"
-                }`}
+                      ? "text-blue-600 dark:text-cyan-400 font-semibold after:scale-x-100 bg-blue-50 dark:bg-blue-900/20"
+                      : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400"
+                  }`}
                 onClick={(e) => {
                   e.preventDefault();
                   setIsMobileMenuOpen(false);
@@ -289,7 +283,7 @@ const Navbar = () => {
               {user ? (
                 <Link
                   to={`/${user.role}`}
-                  className="block py-3 text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium"
+                  className="block py-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Dashboard
@@ -298,7 +292,7 @@ const Navbar = () => {
                 <>
                   <Link
                     to="/login"
-                    className="block py-3 text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium"
+                    className="block py-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors font-medium"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Sign In

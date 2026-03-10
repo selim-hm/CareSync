@@ -53,8 +53,8 @@ export default function Prescriptions() {
         <h1 style="color: #2563eb; text-align: center; margin-bottom: 30px;">My Prescriptions</h1>
         <p style="text-align: center; margin-bottom: 20px;">Generated on ${new Date().toLocaleDateString()}</p>
         ${prescriptionsData
-          .map(
-            (presc) => `
+        .map(
+          (presc) => `
           <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 15px; margin-bottom: 20px;">
             <h2 style="color: #1f2937; margin-bottom: 10px;">Prescription ID: ${presc.id}</h2>
             <p><strong>Doctor:</strong> ${presc.doctor}</p>
@@ -64,18 +64,18 @@ export default function Prescriptions() {
               <strong>Medicines:</strong>
               <ul style="margin: 5px 0; padding-left: 20px;">
                 ${presc.medicines
-                  .map((med) => `
+              .map((med) => `
                   <li>${med.name} — ${med.dosage}, ${med.frequency} (${med.duration})</li>
                 `)
-                  .join("")}
+              .join("")}
               </ul>
             </div>
             <p><strong>Instructions:</strong> ${presc.instructions}</p>
             <p><strong>Next Refill:</strong> ${presc.nextRefill || "N/A"}</p>
           </div>
         `
-          )
-          .join("")}
+        )
+        .join("")}
       </div>
     `;
 
@@ -98,7 +98,7 @@ export default function Prescriptions() {
         </h2>
         <button
           onClick={exportToPDF}
-          className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white font-semibold rounded-lg shadow hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition dark:bg-emerald-500 dark:hover:bg-emerald-600"
+          className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition dark:bg-blue-500 dark:hover:bg-blue-600"
         >
           <DocumentArrowDownIcon className="h-5 w-5" />
           Export All to PDF

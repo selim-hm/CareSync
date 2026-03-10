@@ -17,6 +17,11 @@ const PatientDashboard = ({ activeTab }) => {
   const { user } = useAuth();
   const { appointments } = useAppointments();
 
+  console.log("✅ PatientDashboard loaded successfully!");
+  console.log("User:", user);
+  console.log("User role:", user?.role);
+  console.log("User ID:", user?.id);
+
   const patientAppointments = appointments.filter(
     (apt) => apt.patientId === user?.id
   );
@@ -139,7 +144,7 @@ const DashboardOverview = ({ user, apptCount }) => {
         >
           <MedicineReminders />
         </motion.div>
-        
+
         {/* Health Logs Section with Loading State */}
         {isLoading ? (
           <SkeletonCard className="bg-white dark:bg-gray-800" />

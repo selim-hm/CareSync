@@ -55,9 +55,16 @@ export const AuthProvider = ({ children }) => {
   const [allUsers, setAllUsers] = useState(() => {
     try {
       const storedUsers = localStorage.getItem("users");
-      return storedUsers ? JSON.parse(storedUsers) : initialAllUsers;
+      if (storedUsers) {
+        return JSON.parse(storedUsers);
+      } else {
+        // Initialize localStorage with dummy data on first load
+        localStorage.setItem("users", JSON.stringify(initialAllUsers));
+        return initialAllUsers;
+      }
     } catch (error) {
       console.error("Error parsing users from localStorage", error);
+      localStorage.setItem("users", JSON.stringify(initialAllUsers));
       return initialAllUsers;
     }
   });
@@ -66,35 +73,42 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkExistingSession = async () => {
       try {
-        const token = localStorage.getItem("token");
         const storedUser = localStorage.getItem("caresync_user");
-        if (token && storedUser) {
-          // Verify token with backend
-          try {
-            const response = await fetch('http://localhost:5000/api/auth/me', {
-              headers: { 'Authorization': `Bearer ${token}` },
-            });
-            if (response.ok) {
-              const userData = JSON.parse(storedUser);
-              console.log("Found and verified stored user:", userData);
-              setUser(userData);
-            } else {
-              // Token is invalid, clear storage
-              console.log("Token verification failed, clearing storage");
+        if (storedUser) {
+          const userData = JSON.parse(storedUser);
+
+          console.log("Found stored user:", userData);
+          console.log("User role:", userData.role);
+
+          // If it's a local user, just set it directly
+          if (userData.isLocalUser) {
+            console.log("✅ Found local user in storage:", userData.email);
+            setUser(userData);
+            setLoading(false);
+            return;
+          }
+
+          // If it's a backend user, try to verify the token
+          const token = localStorage.getItem("token");
+          if (token) {
+            try {
+              const response = await fetch('http://localhost:5000/api/auth/me', {
+                headers: { 'Authorization': `Bearer ${token}` },
+              });
+              if (response.ok) {
+                console.log("Found and verified stored user:", userData);
+                setUser(userData);
+              } else {
+                // Token is invalid, clear storage
+                console.log("Token verification failed, clearing storage");
+                localStorage.removeItem("token");
+                localStorage.removeItem("caresync_user");
+              }
+            } catch (error) {
+              console.error("Error verifying token:", error);
               localStorage.removeItem("token");
               localStorage.removeItem("caresync_user");
             }
-          } catch (error) {
-            console.error("Error verifying token:", error);
-            localStorage.removeItem("token");
-            localStorage.removeItem("caresync_user");
-          }
-        } else if (storedUser) {
-          // Legacy local user without backend auth
-          const userData = JSON.parse(storedUser);
-          if (!userData.isBackendUser) {
-            console.log("Found legacy local user:", userData);
-            setUser(userData);
           }
         } else {
           console.log("No stored user found in localStorage");
@@ -119,33 +133,52 @@ export const AuthProvider = ({ children }) => {
     }
   }, [allUsers]);
 
-  // Firebase auth listener - only run if no local user exists
+  // Firebase auth listener - COMPLETELY DISABLED for local users
   useEffect(() => {
-    // If we already have a user from localStorage, don't run Firebase listener
-    if (user && !user.uid?.startsWith("firebase_")) {
+    // CRITICAL: Skip ALL Firebase operations if this is a local user
+    if (user && user.isLocalUser) {
+      console.log("🚫 Local user active - COMPLETELY BLOCKING Firebase listener");
+      return; // Return immediately without setting anything
+    }
+
+    // If no user yet, don't run Firebase listener
+    if (!user) {
+      console.log("No user logged in, Firebase listener standby");
       return;
     }
+
+    console.log("Running Firebase listener for non-local user:", user.email);
+    let isMounted = true;
+
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (!isMounted) return;
+
+      console.log("Firebase auth state changed:", firebaseUser?.email);
       if (firebaseUser) {
         await createUserDocumentIfNotExists(firebaseUser);
         const role = await fetchUserRole(firebaseUser.uid);
-        setUser({
-          uid: firebaseUser.uid,
-          email: firebaseUser.email,
-          displayName: firebaseUser.displayName,
-          photoURL: firebaseUser.photoURL,
-          role,
-        });
+        if (isMounted) {
+          setUser({
+            uid: firebaseUser.uid,
+            email: firebaseUser.email,
+            displayName: firebaseUser.displayName,
+            photoURL: firebaseUser.photoURL,
+            role,
+          });
+        }
       } else {
-        // Only clear user if it's a Firebase user
-        if (user && user.uid?.startsWith("firebase_")) {
+        if (isMounted) {
+          console.log("Firebase user logged out");
           setUser(null);
         }
       }
-      setLoading(false);
     });
-    return unsubscribe;
-  }, [user]);
+
+    return () => {
+      isMounted = false;
+      unsubscribe();
+    };
+  }, [user?.isLocalUser]);
 
   const updateUser = (data) => {
     setUser((prevUser) => {
@@ -181,39 +214,100 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Backend API login
+  // Backend API login with local fallback
   const login = async (email, password, role) => {
+    console.log("🔐 Login attempt with:", { email, role });
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+      // First, check if user exists in local dummy data
+      console.log("📋 Checking local users, count:", allUsers.length);
+      const localUser = allUsers.find(u => {
+        console.log(`  Checking: ${u.email} vs ${email}, pass match: ${u.password === password}`);
+        return u.email === email && u.password === password;
       });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message || 'Login failed');
-      }
-      // Store JWT token
-      localStorage.setItem('token', data.token);
-      
-      // Create user object with role from backend response
-      const backendUser = { 
-        ...data.user, 
-        role: data.user.role || role || 'patient', // Use backend role first, then provided role, then default
-        isBackendUser: true 
 
-      };
-      console.log("Setting user in context:", backendUser);
-      setUser(backendUser);
-      localStorage.setItem("caresync_user", JSON.stringify(backendUser));
-      console.log("User and token stored successfully");
-      return { success: true, user: backendUser };
+      if (localUser) {
+        // Determine final role - use localUser.role first, then parameter, then default
+        const finalRole = localUser.role || role || 'patient';
+        console.log(`📌 Local user found: ${localUser.email}, role from data: ${localUser.role}, final role: ${finalRole}`);
+
+        // Build complete user object
+        const user = {
+          uid: localUser.id,
+          email: localUser.email,
+          name: localUser.name,
+          role: finalRole,
+          id: localUser.id,
+          isLocalUser: true,
+          phone: localUser.phone,
+          avatar: localUser.avatar,
+          qualifications: localUser.qualifications,
+          specialization: localUser.specialization,
+        };
+
+        console.log("✅ User object created:", { email: user.email, role: user.role });
+
+        // Store in localStorage IMMEDIATELY with explicit checks
+        const storedData = {
+          ...localUser,
+          isLocalUser: true,
+          role: finalRole,
+        };
+        const storageKey = "caresync_user";
+        localStorage.setItem(storageKey, JSON.stringify(storedData));
+
+        // Verify storage was successful
+        const verification = localStorage.getItem(storageKey);
+        console.log("💾 Storage verification:", verification ? "SUCCESS" : "FAILED");
+        if (verification) {
+          const parsed = JSON.parse(verification);
+          console.log("   Stored role:", parsed.role);
+        }
+
+        // Update state
+        setUser(user);
+        setLoading(false);
+
+        console.log("🎯 Returning success with user:", user);
+        return { success: true, user };
+      }
+
+      console.log("❌ User not found in local data, trying backend...");
+
+      // If not found locally, try backend API
+      try {
+        const response = await fetch('http://localhost:5000/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.message || 'Login failed');
+        }
+        // Store JWT token
+        localStorage.setItem('token', data.token);
+
+        // Create user object with role from backend response
+        const backendUser = {
+          ...data.user,
+          role: data.user.role || role || 'patient',
+          isBackendUser: true
+        };
+        console.log("✅ Backend login successful:", backendUser);
+        setUser(backendUser);
+        localStorage.setItem("caresync_user", JSON.stringify(backendUser));
+        setLoading(false);
+        return { success: true, user: backendUser };
+      } catch (apiError) {
+        console.log("Backend not available:", apiError.message);
+        // Backend not available
+        throw new Error(`Invalid email or password. Please check your credentials.`);
+      }
     } catch (error) {
-      console.error('Login error:', error);
-      throw new Error(error.message);
-    } finally {
+      console.error('❌ Login error:', error);
       setLoading(false);
+      throw new Error(error.message);
     }
   };
 
@@ -254,7 +348,7 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
     }
   };
-  
+
   // 2. Add the resetPassword function
   const resetPassword = (email) => {
     return sendPasswordResetEmail(auth, email);
